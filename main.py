@@ -84,7 +84,7 @@ class FinanceTracker:
             self.expenses.clear()
             print("All data wiped.") 
             
-            def main():
+def main():
     ft = FinanceTracker()
     menu = {
         "1": ("Add Expense", ft.add_expense),
