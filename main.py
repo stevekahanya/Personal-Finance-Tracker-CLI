@@ -55,3 +55,26 @@ class FinanceTracker:
         eid = int(input("Enter Expense ID to delete: "))
         self.expenses = [e for e in self.expenses if e['id'] != eid]
         print("Expense deleted.")
+        # --- CATEGORY & BUDGET OPERATIONS ---
+
+    # 5. CREATE: Add New Category (List Method: .append)
+    def add_category(self):
+        new_cat = input("New category name: ").strip()
+        if new_cat and new_cat not in self.categories:
+            self.categories.append(new_cat)
+            print(f"'{new_cat}' added.")
+
+    # 6. READ: Filter by Category (List Method: List Comprehension)
+    def filter_by_cat(self):
+        cat = input("Filter by which category? ")
+        filtered = [e for e in self.expenses if e['cat'].lower() == cat.lower()]
+        if filtered:
+            for f in filtered: print(f)
+        else:
+            print("No expenses found for that category.")
+
+    # 7. UPDATE: Set Monthly Budget
+    def set_budget(self):
+        self.budget = float(input(f"Current Budget (${self.budget}). Set new: "))
+        print("Budget updated.")
+        
