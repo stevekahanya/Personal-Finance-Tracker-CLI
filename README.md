@@ -21,14 +21,14 @@ Set Monthly Budget (Update): Define or change the total spending limit.
 Wipe All Data (Delete): Clear the entire expense history for a fresh start.
 
 ## Technical Architecture
-Object Relationship
+## Object Relationship
 The system implements a One-to-Many (1:M) relationship:
 
 Category → Expenses: One category (e.g., "Food") can be associated with multiple expense entries.
 
 Validation: The system checks if a category exists before assigning it to an expense, ensuring data integrity.
 
-Data Structures
+ ## Data Structures
 Lists: Used for storing the collection of categories and the master list of expenses.
 
 Dictionaries: Each expense is represented as a dictionary for labeled data access:
