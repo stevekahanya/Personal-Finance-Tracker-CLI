@@ -10,3 +10,21 @@ class FinanceTracker:
         self.budget = 2000.0
 
     # --- EXPENSE OPERATIONS (CRUD) ---
+    
+    # 1. CREATE: Add Expense
+    def add_expense(self):
+        try:
+            amt = float(input("Amount: "))
+            print(f"Available Categories: {self.categories}")
+            cat = input("Category: ")
+            if cat not in self.categories:
+                print("Warning: Category doesn't exist. Adding to 'Misc'.")
+                cat = "Misc"
+            desc = input("Description: ")
+            date = datetime.date.today().strftime("%Y-%m-%d")
+            
+            self.expenses.append({"id": self.next_id, "amt": amt, "cat": cat, "desc": desc, "date": date})
+            self.next_id += 1
+            print("Expense recorded!")
+        except ValueError:
+            print("Invalid amount.")
