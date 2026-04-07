@@ -77,4 +77,37 @@ class FinanceTracker:
     def set_budget(self):
         self.budget = float(input(f"Current Budget (${self.budget}). Set new: "))
         print("Budget updated.")
+       # 8. DELETE: Clear All Expenses (List Method: .clear)
+    def reset_data(self):
+        confirm = input("Are you sure you want to delete ALL expenses? (y/n): ")
+        if confirm.lower() == 'y':
+            self.expenses.clear()
+            print("All data wiped.") 
+            
+            def main():
+    ft = FinanceTracker()
+    menu = {
+        "1": ("Add Expense", ft.add_expense),
+        "2": ("View All", ft.view_all),
+        "3": ("Edit Expense", ft.edit_expense),
+        "4": ("Delete Expense", ft.delete_expense),
+        "5": ("Add Category", ft.add_category),
+        "6": ("Filter by Category", ft.filter_by_cat),
+        "7": ("Set Budget", ft.set_budget),
+        "8": ("Wipe All Data", ft.reset_data),
+        "9": ("Exit", exit)
+    }
+
+    while True:
+        print("\n--- PRO FINANCE TRACKER ---")
+        for k, v in menu.items(): print(f"{k}. {v[0]}")
         
+        choice = input("\nSelect: ")
+        if choice in menu:
+            if choice == "9": break
+            menu[choice][1]()
+        else:
+            print("Invalid choice.")
+
+if __name__ == "__main__":
+    main()
