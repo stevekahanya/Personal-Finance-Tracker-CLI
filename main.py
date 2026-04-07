@@ -28,3 +28,30 @@ class FinanceTracker:
             print("Expense recorded!")
         except ValueError:
             print("Invalid amount.")
+            
+            # 2. READ: View All Expenses
+    def view_all(self):
+        print(f"\n{'ID':<5} {'Amount':<10} {'Category':<15} {'Description'}")
+        print("-" * 50)
+        for e in self.expenses:
+            print(f"{e['id']:<5} ${e['amt']:<9.2f} {e['cat']:<15} {e['desc']}")
+
+    # 3. UPDATE: Edit Expense
+    def edit_expense(self):
+        try:
+            eid = int(input("Enter Expense ID to edit: "))
+            for e in self.expenses:
+                if e['id'] == eid:
+                    e['amt'] = float(input(f"New Amt (${e['amt']}): ") or e['amt'])
+                    e['desc'] = input(f"New Desc ({e['desc']}): ") or e['desc']
+                    print("Updated!")
+                    return
+            print("ID not found.")
+        except ValueError:
+            print("Invalid input.")
+
+    # 4. DELETE: Remove Specific Expense
+    def delete_expense(self):
+        eid = int(input("Enter Expense ID to delete: "))
+        self.expenses = [e for e in self.expenses if e['id'] != eid]
+        print("Expense deleted.")
